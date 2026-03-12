@@ -1,0 +1,14 @@
+services:
+  juice-shop:
+    image: bkimminich/juice-shop:latest
+    container_name: target-juiceshop
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - pentest-net
+
+networks:
+  pentest-net:
+    name: pentest-net
+    driver: bridge
