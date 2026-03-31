@@ -1,0 +1,11 @@
+FROM owasp/zap2line:stable
+
+USER root
+WORKDIR /app
+
+COPY run_zap_full.sh /app/run_zap_full.sh
+RUN chmod +x /app/run_zap_full.sh
+
+RUN mkdir /app/results && chmod 777 /app/results
+
+ENTRYPOINT ["/bin/bash", "/app/run_zap.sh"]

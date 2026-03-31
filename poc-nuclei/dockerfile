@@ -1,0 +1,10 @@
+FROM projectdiscovery/nuclei:latest
+
+WORKDIR /app
+
+COPY run_scan.sh /app/run_scan.sh
+RUN chmod +x /app/run_scan.sh
+
+RUN nuclei -ut
+
+ENTRYPOINT ["/bin/sh", "/app/run_scan.sh"]
