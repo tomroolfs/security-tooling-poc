@@ -1,0 +1,14 @@
+FROM python:3.11-slim
+
+# Installeer dependencies
+RUN pip install --no-cache-dir requests urllib3
+
+WORKDIR /app
+
+# Kopieer de fuzzer en de configuratie
+COPY wuppie_fuzzer.py .
+
+# Op de server willen we direct resultaten zien in de logs
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "wuppie_fuzzer.py"]
